@@ -24,6 +24,18 @@ import model.Vol;
 public class TestClement {
 
 	@Autowired
+	private CompagnieRepository compagnieRepository;
+
+	@Autowired
+	private VolRepository volRepository;
+
+	@Autowired
+	private VilleRepository villeRepository;
+
+	@Autowired
+	private AeroportRepository aeroportRepository;
+
+	@Autowired
 	private CompagnieVolRepository compagnieVolRepository;
 
 	@Autowired
@@ -39,26 +51,23 @@ public class TestClement {
 		assertNotNull(escaleRepository);
 
 		Compagnie compagnie = new Compagnie();
-		compagnie.setIdCompagnie(3);
 		compagnie.setNom("American Airlines");
-		compagnie.setVersion(1);
+		compagnieRepository.save(compagnie);
 		Vol vol = new Vol();
-		vol.setIdVol(3);
-		vol.setVersion(1);
+		volRepository.save(vol);
 		Ville ville = new Ville();
-		ville.setIdVille(4);
 		ville.setNom("NY");
-		ville.setVersion(1);
+		villeRepository.save(ville);
 		Aeroport aeroport = new Aeroport();
-		aeroport.setIdAeroport(30);
 		aeroport.setNom("JFK");
-		aeroport.setVersion(1);
+		aeroportRepository.save(aeroport);
 
 		CompagnieVolKey compagnieVolKey = new CompagnieVolKey();
 		compagnieVolKey.setCompagnie(compagnie);
 		compagnieVolKey.setVol(vol);
 		CompagnieVol compagnieVol = new CompagnieVol();
 		compagnieVol.setKey(compagnieVolKey);
+		compagnieVolRepository.save(compagnieVol);
 
 		VilleAeroportKey villeAeroportKey = new VilleAeroportKey();
 		villeAeroportKey.setVille(ville);
@@ -71,8 +80,5 @@ public class TestClement {
 		escaleKey.setAeroport(aeroport);
 		Escale escale = new Escale();
 		escale.setKey(escaleKey);
-		
-//		compagnieVolRepository.save(compagnieVol);
-//		System.out.println(compagnieVolRepository.findById(compagnieVolKey).get().getKey().getCompagnie().getNom());
 	}
 }
