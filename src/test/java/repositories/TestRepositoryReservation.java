@@ -17,7 +17,6 @@ import model.Reservation;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations= {"/applicationContext.xml"})
 public class TestRepositoryReservation {
-
 	@Autowired
 	private ReservationRepository reservationRepository;
 

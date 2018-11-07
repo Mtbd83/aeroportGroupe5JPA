@@ -15,7 +15,6 @@ import model.Vol;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations= {"/applicationContext.xml"})
 public class TestRepositoryVol {
-
 	@Autowired
 	private VolRepository volRepository;
 	
