@@ -14,7 +14,7 @@
 
 <!-- permet d'utiliser les annotations dans les class -->
 <context:annotation-config></context:annotation-config>
-<context:component-scan base-package="aeroportGroupe5JPA.service"></context:component-scan>
+<context:component-scan base-package="service"></context:component-scan>
 
 <bean id ="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 	<property name ="driverClassName" value="${db.driver}"></property>
@@ -27,7 +27,7 @@
 
 <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 	<property name="dataSource" ref="dataSource"></property>
-	<property name="packagesToScan" value="aeroportGroupe5JPA.model"></property>
+	<property name="packagesToScan" value="model"></property>
 	<property name="jpaVendorAdapter">
 		<bean class = "org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 			<property name="databasePlatform" value="${db.dialect}"></property>
@@ -50,6 +50,6 @@
 
 <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"></bean>
 
-<jpa:repositories base-package="aeroportGroupe5JPA.repositories"></jpa:repositories>
+<jpa:repositories base-package="repositories"></jpa:repositories>
 
 </beans>
