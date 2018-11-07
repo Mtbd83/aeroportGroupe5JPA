@@ -47,9 +47,7 @@ public class Login {
 	public Integer getId() {
 		return id;
 	}
-	public void setId_login(Integer id) {
-		this.id = id;
-	}
+	
 	public String getLogin() {
 		return login;
 	}
