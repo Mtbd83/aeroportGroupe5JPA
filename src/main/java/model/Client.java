@@ -28,7 +28,7 @@ import javax.persistence.Version;
 
 @Table(name = "client")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type",discriminatorType=DiscriminatorType.STRING,length=5)
+@DiscriminatorColumn(name="type",discriminatorType=DiscriminatorType.STRING,length=20)
 @SequenceGenerator(name = "seqClient", sequenceName = "seq_client", initialValue = 1, allocationSize = 1)
 public class Client {
 	@Id
