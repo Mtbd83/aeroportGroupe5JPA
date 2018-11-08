@@ -80,26 +80,27 @@ public class ReservationService {
 	}
 	
 	
-//	public List<Reservation> showReservationByClient(Client client) {
-//		List<Reservation> reservation = reservationRepository.findByClient(client);
-//		return reservation;
-//	}
+
+	public List<Reservation> showReservationByClient(Client client) {
+		List<Reservation> reservation = reservationRepository.findByClient(client);
+		return reservation;
+	}
 	
-//	public List<Reservation> showReservationByNomClient(String nom) {
-//		List<Reservation> reservations = reservationRepository.findByNomClient(nom);
-//		return reservations;
-//	}
-//	
-//	
-//	public List<Reservation> showReservationByNomPassager(String nom) {
-//		List<Reservation> reservations  = reservationRepository.findByNomPassager(nom);
-//		return reservations;
-//	}
-//	
-//	public List<Reservation> showReservationByPassager(Passager passager) {
-//		List<Reservation> reservation = reservationRepository.findByPassager(passager);
-//		return reservation;
-//	}
+	public List<Reservation> showReservationByNomClient(String nom) {
+		List<Reservation> reservations = reservationRepository.findByNomClient(nom);
+		return reservations;
+	}
+	
+	
+	public List<Reservation> showReservationByNomPassager(String nom) {
+		List<Reservation> reservations  = reservationRepository.findByNomPassager(nom);
+		return reservations;
+	}
+	
+	public List<Reservation> showReservationByPassager(Passager passager) {
+		List<Reservation> reservation = reservationRepository.findByPassager(passager);
+		return reservation;
+	}
 
 
 }
