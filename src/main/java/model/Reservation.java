@@ -11,8 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.persistence.Version;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @SequenceGenerator(name="seqIdReservation",sequenceName="seq_id_reservation", initialValue=50,allocationSize=1)
@@ -23,6 +27,8 @@ public class Reservation {
 	@Column(name="id_reservation",length =100)
 	private Integer numeroReservation;
 	@Column(name="date_reservation",length =100)
+	@Temporal(TemporalType.TIME)
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date dateReservation;
 	@ManyToOne
 	@JoinColumn(name="id_client")

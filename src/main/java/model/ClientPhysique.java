@@ -7,25 +7,19 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue("P")
 public class ClientPhysique extends Client {
+
 	@Column
-	private String titrePhysique;
-	@Column
-	private String String;
+	private String prenom;;
 	public ClientPhysique() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public String getTitrePhysique() {
-		return titrePhysique;
+
+	public String getPrenom() {
+		return prenom;
 	}
-	public void setTitrePhysique(String titrePhysique) {
-		this.titrePhysique = titrePhysique;
-	}
-	public String getString() {
-		return String;
-	}
-	public void setString(String string) {
-		String = string;
+	public void setPrenom(String string) {
+		prenom = string;
 	}
 
 	

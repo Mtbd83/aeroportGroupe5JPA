@@ -7,11 +7,8 @@ import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
-import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -50,8 +47,7 @@ public class Client {
 
 	
 	@Column(name = "titre_client", length = 100)
-	@Enumerated(EnumType.STRING)
-	private Titre titre;
+	private String titre;
 	
 	@OneToOne
 	@JoinColumn(name = "login")
@@ -114,11 +110,11 @@ public class Client {
 	}
 	
 
-	public Titre getTitre() {
+	public String getTitre() {
 		return titre;
 	}
 
-	public void setTitre(Titre titre) {
+	public void setTitre(String titre) {
 		this.titre = titre;
 	}
 

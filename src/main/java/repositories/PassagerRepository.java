@@ -6,4 +6,6 @@ import model.Passager;
 
 public interface PassagerRepository extends JpaRepository<Passager, Integer>{
 
+	Passager findByNom(String name);
+
 }
