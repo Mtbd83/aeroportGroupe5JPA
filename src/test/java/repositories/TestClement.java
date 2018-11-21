@@ -25,22 +25,16 @@ public class TestClement {
 
 	@Autowired
 	private CompagnieRepository compagnieRepository;
-
 	@Autowired
 	private VolRepository volRepository;
-
 	@Autowired
 	private VilleRepository villeRepository;
-
 	@Autowired
 	private AeroportRepository aeroportRepository;
-
 	@Autowired
 	private CompagnieVolRepository compagnieVolRepository;
-
 	@Autowired
 	private VilleAeroportRepository villeAeroportRepository;
-
 	@Autowired
 	private EscaleRepository escaleRepository;
 
@@ -74,11 +68,13 @@ public class TestClement {
 		villeAeroportKey.setAeroport(aeroport);
 		VilleAeroport villeAeroport = new VilleAeroport();
 		villeAeroport.setKey(villeAeroportKey);
+		villeAeroportRepository.save(villeAeroport);
 
 		EscaleKey escaleKey = new EscaleKey();
 		escaleKey.setVol(vol);
 		escaleKey.setAeroport(aeroport);
 		Escale escale = new Escale();
 		escale.setKey(escaleKey);
+		escaleRepository.save(escale);
 	}
 }
