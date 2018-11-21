@@ -6,4 +6,6 @@ import model.Compagnie;
 
 public interface CompagnieRepository extends JpaRepository<Compagnie, Integer> {
 
+	Compagnie findByNom(String nom);
+
 }

@@ -33,13 +33,15 @@ public class TestReservation {
 	
 
 
-	@Test
+//	@Test
 	public void test() {
 		Client client = new Client();
+		client.setClientName("Jean");
 		clientRepository.save(client);
 		Vol vol = new Vol();
 		volRepository.save(vol);
 		Passager passager = new Passager();
+		passager.setNom("Jean");
 		passagerRepository.save(passager);
 		
 		reservationService.createReservation(client, passager, vol);
@@ -68,15 +70,36 @@ public class TestReservation {
 
 	
 //	@Test
-//	public void showReservationByClient() {
-//		Optional<Client> client =clientRepository.findById(50) ;
-//		if (client.isPresent()) {
-//			reservationService.showReservationByClient(client.get());
-//		}
-//		assertNotNull(reservationService.showReservationByClient(client.get()));
-//		
-//	}
+	public void showReservationByClient() {
+		Optional<Client> client =clientRepository.findById(2) ;
+		if (client.isPresent()) {
+			reservationService.showReservationByClient(client.get());
+		}
+		assertNotNull(reservationService.showReservationByClient(client.get()));
+		
+	}
 	
 	
+//	@Test
+	public void showReservationByPassager() {
+		Optional<Passager> passager =passagerRepository.findById(2) ;
+		if (passager.isPresent()) {
+			reservationService.showReservationByPassager(passager.get());
+		}
+		assertNotNull(reservationService.showReservationByPassager(passager.get()));
+		
+	}
+	
+//	@Test
+	public void showReservationByClientName() {
+		assertNotNull(reservationService.showReservationByNomClient("Jean"));
+		
+	}
+	
+//	@Test
+	public void showReservationByPassagerName() {
+		assertNotNull(reservationService.showReservationByNomPassager("Jean"));
+		
+	}
 
 }
