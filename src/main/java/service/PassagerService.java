@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +31,15 @@ public class PassagerService {
 		passagerRepository.delete(passagerRepository.findByNom(name));
 	}
 
+	public void deletePassagerById(Integer id) {
+		List<Passager> passagers = passagerRepository.findAll();
+		if (passagers.contains(passagerRepository.findById(id).get())) {
+			passagerRepository.delete(passagerRepository.findById(id).get());
+		} else {
+			System.out.println("le passager n existe pas");
+		}
+	}
+
 	public void modifyPassagerName(Passager passager, String name) {
 		if (name != null) {
 			passager.setNom(name);
@@ -48,6 +59,28 @@ public class PassagerService {
 			passager.setAdresse(adress);
 			passagerRepository.save(passager);
 		}
+	}
+
+	public void updatePassager(Passager passager) {
+		List<Passager> passagers = passagerRepository.findAll();
+		if (passagers.contains(passagerRepository.findById(passager.getIdPassager()).get())) {
+			Passager p = passagerRepository.findById(passager.getIdPassager()).get();
+			save(passager);;
+		} else {
+			System.out.println("le passager n existe pas");
+		}
+	}
+
+	public void save(Passager passager) {
+		passagerRepository.save(passager);
+		}
+
+	public List<Passager> findAllPassagers() {
+		return passagerRepository.findAll();
+	}
+
+	public Passager findPassagerById(Integer idPassger) {
+		return passagerRepository.findById(idPassger).get();
 	}
 
 }
