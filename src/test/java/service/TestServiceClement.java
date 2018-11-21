@@ -1,4 +1,4 @@
-package repositories;
+package service;
 
 import static org.junit.Assert.*;
 
@@ -18,10 +18,20 @@ import model.Ville;
 import model.VilleAeroport;
 import model.VilleAeroportKey;
 import model.Vol;
+import repositories.AeroportRepository;
+import repositories.CompagnieRepository;
+import repositories.CompagnieVolRepository;
+import repositories.EscaleRepository;
+import repositories.VilleAeroportRepository;
+import repositories.VilleRepository;
+import repositories.VolRepository;
+import service.CompagnieVolService;
+import service.EscaleService;
+import service.VilleAeroportService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/applicationContext.xml" })
-public class TestClement {
+public class TestServiceClement {
 
 	@Autowired
 	private CompagnieRepository compagnieRepository;
@@ -37,12 +47,21 @@ public class TestClement {
 	private VilleAeroportRepository villeAeroportRepository;
 	@Autowired
 	private EscaleRepository escaleRepository;
+	@Autowired
+	private CompagnieVolService compagnieVolService;
+	@Autowired
+	private VilleAeroportService villeAeroportService;
+	@Autowired
+	private EscaleService escaleService;
 
 	@Test
 	public void test() {
 		assertNotNull(compagnieVolRepository);
 		assertNotNull(villeAeroportRepository);
 		assertNotNull(escaleRepository);
+		assertNotNull(compagnieVolService);
+		assertNotNull(villeAeroportService);
+		assertNotNull(escaleService);
 
 		Compagnie compagnie = new Compagnie();
 		compagnie.setNom("American Airlines");
@@ -54,7 +73,7 @@ public class TestClement {
 		villeRepository.save(ville);
 		Aeroport aeroport = new Aeroport();
 		aeroport.setNom("JFK");
-		aeroportRepository.save(aeroport);
+		aeroportRepository.save(aeroport);		
 
 		CompagnieVolKey compagnieVolKey = new CompagnieVolKey();
 		compagnieVolKey.setCompagnie(compagnie);
@@ -63,6 +82,11 @@ public class TestClement {
 		compagnieVol.setKey(compagnieVolKey);
 		compagnieVolRepository.save(compagnieVol);
 
+		compagnieVolService.createCompagnieVol(compagnie, vol);
+		compagnieVolService.updateCompagnie(compagnieVol, compagnie);
+		compagnieVolService.updateVol(compagnieVol, vol);
+		compagnieVolService.deleteCompagnieVol(compagnieVol);
+
 		VilleAeroportKey villeAeroportKey = new VilleAeroportKey();
 		villeAeroportKey.setVille(ville);
 		villeAeroportKey.setAeroport(aeroport);
@@ -70,11 +94,21 @@ public class TestClement {
 		villeAeroport.setKey(villeAeroportKey);
 		villeAeroportRepository.save(villeAeroport);
 
+		villeAeroportService.createVilleAeroport(ville, aeroport);
+		villeAeroportService.updateVille(villeAeroport, ville);
+		villeAeroportService.updateAeroport(villeAeroport, aeroport);
+		villeAeroportService.deleteVilleAeroport(villeAeroport);
+
 		EscaleKey escaleKey = new EscaleKey();
 		escaleKey.setVol(vol);
 		escaleKey.setAeroport(aeroport);
 		Escale escale = new Escale();
 		escale.setKey(escaleKey);
 		escaleRepository.save(escale);
+
+		escaleService.createEscale(vol, aeroport);
+		escaleService.updateVol(escale, vol);
+		escaleService.updateAeroport(escale, aeroport);
+		escaleService.deleteEscale(escale);
 	}
 }
