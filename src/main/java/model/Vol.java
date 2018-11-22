@@ -1,6 +1,5 @@
 package model;
 
- 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,26 +27,26 @@ public class Vol {
 	@Column(name = "id_vol", length = 20)
 	private Integer idVol;
 
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	@Column(name = "date_depart", length = 20)
 	private Date dateDepart;
 
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	@Column(name = "date_arrivee", length = 20)
 	private Date dateArrivee;
 
-	@DateTimeFormat(pattern="HH:mm")
+	@DateTimeFormat(pattern = "HH:mm")
 	@Temporal(TemporalType.TIME)
 	@Column(name = "heure_depart", length = 20)
 	private Date heureDepart;
 
-	@DateTimeFormat(pattern="HH:mm")
+	@DateTimeFormat(pattern = "HH:mm")
 	@Temporal(TemporalType.TIME)
 	@Column(name = "heure_arrivee", length = 20)
 	private Date heureArrivee;
-	
+
 	@OneToMany(mappedBy = "key.vol")
 	@Column(name = "compagnie", length = 20)
 	private List<CompagnieVol> compagniesVol;
@@ -93,8 +92,6 @@ public class Vol {
 	public void setDateArrivee(Date dateArrivee) {
 		this.dateArrivee = dateArrivee;
 	}
-
-
 
 	public Date getHeureDepart() {
 		return heureDepart;

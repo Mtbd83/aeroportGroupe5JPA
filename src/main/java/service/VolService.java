@@ -21,11 +21,12 @@ public class VolService {
 	@Autowired
 	private ReservationRepository reservationRepository;
 
-	public void saveVol(Vol vol) { 
-			volRepository.save(vol); 
-	} 
+	public void saveVol(Vol vol) {
+		volRepository.save(vol);
+	}
+
 	public void createVol(Vol vol) {
-		if(vol != null) {
+		if (vol != null) {
 			volRepository.save(vol);
 		}
 	}
