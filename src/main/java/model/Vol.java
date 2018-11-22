@@ -1,11 +1,9 @@
 package model;
 
-
-import java.sql.Time;
+ 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,6 +18,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @SequenceGenerator(name = "seqIdvol", sequenceName = "seq_id_vol", initialValue = 50, allocationSize = 1)
 public class Vol {
@@ -27,19 +27,23 @@ public class Vol {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqIdvol")
 	@Column(name = "id_vol", length = 20)
 	private Integer idVol;
-	
+
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	@Column(name = "date_depart", length = 20)
 	private Date dateDepart;
-	
+
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	@Column(name = "date_arrivee", length = 20)
 	private Date dateArrivee;
-	
+
+	@DateTimeFormat(pattern="HH:mm")
 	@Temporal(TemporalType.TIME)
 	@Column(name = "heure_depart", length = 20)
 	private Date heureDepart;
-	
+
+	@DateTimeFormat(pattern="HH:mm")
 	@Temporal(TemporalType.TIME)
 	@Column(name = "heure_arrivee", length = 20)
 	private Date heureArrivee;

@@ -23,4 +23,5 @@ public interface VolRepository extends JpaRepository<Vol, Integer>  {
 	
 	@Query("select v from Vol v left join fetch v.compagniesVol where v.idVol=:id") 
 	Optional<Vol> findVolWithCompagniesVol(@Param("id")Integer idVol);
+	 
 }
