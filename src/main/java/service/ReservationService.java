@@ -99,4 +99,9 @@ public class ReservationService {
 		return reservation;
 	}
 
+	public void createReservation(Reservation reservation) {
+		reservationRepository.save(reservation);
+		
+	}
+
 }
