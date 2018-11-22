@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 public class ClientPhysique extends Client {
 
 	@Column
-	private String prenom;;
+	private String prenom;
 	public ClientPhysique() {
 		super();
 		// TODO Auto-generated constructor stub
