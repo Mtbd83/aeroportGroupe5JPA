@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 @Entity
 @Table(name = "passager")
@@ -23,30 +24,29 @@ public class Passager {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqPassager")
 	@Column(name = "id_passager", length = 50)
 	private Integer idPassager;
-	
+
 	@Column(name = "nom_passager", length = 100)
 	private String nom;
-	
+
 	@Column(name = "prenom_passager", length = 100)
 	private String prenom;
-	
+
 	@Column(name = "adresse_passager", length = 100)
 	@Embedded
-	@AttributeOverrides({
-		@AttributeOverride(name="adresse", column=@Column(name="adresse", length=200)),
-		@AttributeOverride(name="codePostal", column=@Column(name="code_postal", length=20)),
-		@AttributeOverride(name="ville", column=@Column(name="ville", length=100)),
-		@AttributeOverride(name="pays", column=@Column(name="pays", length=100)),
-	})
+	@AttributeOverrides({ @AttributeOverride(name = "adresse", column = @Column(name = "adresse", length = 200)),
+			@AttributeOverride(name = "codePostal", column = @Column(name = "code_postal", length = 20)),
+			@AttributeOverride(name = "ville", column = @Column(name = "ville", length = 100)),
+			@AttributeOverride(name = "pays", column = @Column(name = "pays", length = 100)), })
 	private Adresse adresse;
-	
-	@OneToMany (mappedBy="passager")
-	private List<Reservation> reservations = new ArrayList<>();
-	
 
-	
+	@OneToMany(mappedBy = "passager")
+	private List<Reservation> reservations = new ArrayList<>();
+
+	@Version
+	private int version;
+
 	public Passager() {
-		
+
 	}
 
 	public Integer getIdPassager() {
@@ -81,6 +81,14 @@ public class Passager {
 		this.adresse = adresse;
 	}
 
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -113,8 +121,5 @@ public class Passager {
 	public void setReservations(List<Reservation> reservations) {
 		this.reservations = reservations;
 	}
-	
-	
-	
-	
+
 }
