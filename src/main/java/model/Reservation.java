@@ -13,7 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.persistence.Version;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -27,7 +26,7 @@ public class Reservation {
 	@Column(name="id_reservation",length =100)
 	private Integer numeroReservation;
 	@Column(name="date_reservation",length =100)
-	@Temporal(TemporalType.TIME)
+	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date dateReservation;
 	@ManyToOne
@@ -111,6 +110,14 @@ public class Reservation {
 		} else if (!numeroReservation.equals(other.numeroReservation))
 			return false;
 		return true;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 	
 	
